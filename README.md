@@ -1,2 +1,5 @@
-# docker-php-7.2-ci
-PHP 7.2 Dockerfile with mcrypt and libsodium
+# Docker image for CI/CD
+
+- PHP 7.2, 7.3, 7.4
+- Composer
+- Deployer
