@@ -1,4 +1,4 @@
-FROM php:7.3-cli
+FROM php:7.4-cli
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -24,7 +24,7 @@ RUN docker-php-ext-install gettext
 
 # GD:
 RUN apt-get install libgd-dev libfreetype6-dev -y --no-install-recommends
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install gd
 
 # IMAGICK:
@@ -77,7 +77,6 @@ RUN docker-php-ext-install xsl
 
 # ZIP:
 RUN apt-get install libzip-dev unzip -y --no-install-recommends
-RUN docker-php-ext-configure zip --with-libzip
 RUN docker-php-ext-install zip
 
 # COMPOSER:
