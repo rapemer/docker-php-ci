@@ -1,5 +1,22 @@
 # Docker image for CI/CD
 
-- PHP 7.2, 7.3, 7.4
-- Composer
-- Deployer
+* PHP versions 7.2, 7.3, 7.4, 8.0
+* extensions:
+    * apcu
+    * bcmath
+    * calendar
+    * exif
+    * gettext
+    * gd
+    * intl
+    * opcache
+    * pcntl
+    * pdo
+    * postgresql
+    * redis
+    * soap
+    * sockets
+    * xsl
+    * zip
+* Composer 2
+* Deployer
