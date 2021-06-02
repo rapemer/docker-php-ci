@@ -1,10 +1,10 @@
-FROM php:7.4-cli
+FROM php:8.0-cli
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN pecl channel-update pecl.php.net
 RUN apt-get update
-RUN apt-get install build-essential apt-utils ssh openssh-client -y --no-install-recommends
+RUN apt-get install git build-essential apt-utils ssh openssh-client -y --no-install-recommends
 
 # APCU:
 RUN pecl install apcu
@@ -27,24 +27,10 @@ RUN apt-get install libgd-dev libfreetype6-dev -y --no-install-recommends
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install gd
 
-# IMAGICK:
-RUN apt-get install libmagickwand-dev -y --no-install-recommends
-RUN pecl install imagick
-RUN docker-php-ext-enable imagick
-
 # INTL:
 RUN apt-get install libicu-dev -y --no-install-recommends
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-install intl
-
-# MEMCACHED:
-RUN apt-get install libmemcached-dev zlib1g-dev -y --no-install-recommends
-RUN curl -L -o /tmp/memcached.tar.gz "https://github.com/php-memcached-dev/php-memcached/archive/v3.1.3.tar.gz" && \
-    mkdir -p /usr/src/php/ext/memcached && \
-    tar -C /usr/src/php/ext/memcached -zxvf /tmp/memcached.tar.gz --strip 1 && \
-    docker-php-ext-configure memcached && \
-    docker-php-ext-install memcached && \
-    rm /tmp/memcached.tar.gz
 
 # OPCACHE:
 RUN docker-php-ext-install opcache
