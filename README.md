@@ -1,6 +1,6 @@
 # Docker image for CI/CD
 
-* PHP versions 7.2, 7.3, 7.4, 8.0
+* PHP versions 7.2, 7.3, 7.4, 8.0, 8.1
 * extensions:
     * apcu
     * bcmath
